@@ -6,10 +6,10 @@ const initialState = {
         {_id: Math.random(), name: 'Task',  status: 'done', priority: 1}
     ],
     columns: [
-        {status: 'todo'},
-        {status: 'progress'},
-        {status: 'preview'},
-        {status: 'done'}
+        {_id: Math.random(), status: 'todo'},
+        {_id: Math.random(), status: 'progress'},
+        {_id: Math.random(), status: 'review'},
+        {_id: Math.random(), status: 'done'}
     ]
 }
 const kanban = (state = initialState, action) => {
@@ -24,6 +24,19 @@ const kanban = (state = initialState, action) => {
             return {
                 ...state,
                 cards: newCard
+            }
+        case 'MOVE_RIGHT':
+        const newList = state.cards.map(el => {
+            if (el._id === action.payload) {
+                const colStatuses = state.columns.map(el => el.status)
+                return {...el, status: colStatuses[colStatuses.indexOf(el.status) + 1]}
+            }else {
+                return el
+            }
+        })
+            return {
+            ...state,
+                cards: newList
             }
         default: return state
     }
