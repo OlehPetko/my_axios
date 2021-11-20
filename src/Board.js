@@ -7,7 +7,7 @@ const {cards, columns} = props
 
     return (
         <Row>
-            {columns.map(column => <Column column={column} cards={cards} />)}
+            {columns.map(column => <Column  column={column} cards={cards} />)}
         </Row>);
 }
 

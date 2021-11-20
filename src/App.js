@@ -1,18 +1,18 @@
 import './App.css';
 import {connect} from "react-redux";
 import Board from "./Board";
-import {Button, Container} from "reactstrap";
+import {Button, Container, Input} from "reactstrap";
 
 function App(props) {
     return (
-         <Container>
-             <Button onClick={props.addCard}>add</Button>
-                    <Board cards={props.cards} columns={props.columns}/>
-         </Container>
+        <Container>
+            <Button onClick={props.addCard}>add</Button>
+            <Input/>
+            <Board cards={props.cards} columns={props.columns}/>
+        </Container>
 
-        );
+    );
 }
-
 const mapStateToProps = (state) => ({
     cards: state.cards,
     columns: state.columns
